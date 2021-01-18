@@ -168,7 +168,7 @@ variable "create_security_group" {
 }
 
 variable "customized_security_group" {
-  type = string
-  default = ""
+  type = list(string)
+  default = []
   description = "If provided, the MSK cluster will be attached to this security group. If not given, a default security group will be created"
 }
