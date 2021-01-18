@@ -39,7 +39,7 @@ resource "aws_security_group_rule" "ingress_cidr_blocks" {
 }
 
 resource "aws_security_group_rule" "egress" {
-  count             = module.this.enabled && create_security_group ? 1 : 0
+  count             = module.this.enabled && var.create_security_group ? 1 : 0
   description       = "Allow all egress traffic"
   type              = "egress"
   from_port         = 0
@@ -69,7 +69,7 @@ resource "aws_msk_cluster" "default" {
     instance_type   = var.broker_instance_type
     ebs_volume_size = var.broker_volume_size
     client_subnets  = var.subnet_ids
-    security_groups = create_security_group ? var.customized_seurity_group : aws_security_group.default.*.id
+    security_groups = var.create_security_group ? var.customized_security_group : aws_security_group.default.*.id
   }
 
   configuration_info {
