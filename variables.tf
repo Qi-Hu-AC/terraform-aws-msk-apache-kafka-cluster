@@ -167,7 +167,7 @@ variable "create_security_group" {
   description = "Whether use default security group or use customized_seurity_group"
 }
 
-variable "customized_seurity_group" {
+variable "customized_security_group" {
   type = string
   default = ""
   description = "If provided, the MSK cluster will be attached to this security group. If not given, a default security group will be created"
