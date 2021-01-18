@@ -32,6 +32,7 @@ variable "subnet_ids" {
 variable "zone_id" {
   type        = string
   description = "Route53 DNS Zone ID for MSK broker hostnames"
+  default     = ""
 }
 
 variable "security_groups" {
@@ -152,4 +153,10 @@ variable "properties" {
   type        = map(string)
   default     = {}
   description = "Contents of the server.properties file. Supported properties are documented in the [MSK Developer Guide](https://docs.aws.amazon.com/msk/latest/developerguide/msk-configuration-properties.html)"
+}
+
+variable "route_53_enabled" {
+  type        = bool
+  default     = false
+  description = "Whether create aws_route53_record"
 }
